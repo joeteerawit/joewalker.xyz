@@ -1,0 +1,42 @@
+version: '3.8'
+services: 
+  
+  wordpress:
+    image: wordpress:5.8.0-php7.4-fmp-alpine
+    container_name: wordpress
+    ports:
+      - 80
+    volumes:
+      - $(pwd)/wordpress:/var/www/html
+    restart: always
+    depends_on: mariadb
+    environment:
+      WORDPRESS_DB_HOST: mariadb:3306
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: 'sBGCjVlakvtoeM92Evx$YX2mEyUMMgBH'
+      WORDPRESS_DB_NAME: joewalkercrypto
+  
+  mariadb:
+    image: mariadb:10.6.4-focal
+    container_name: mariadb
+    platform: linux/amd64
+    volumes: 
+      - $(pwd)/mariadb:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: '@i8An5B7UudTnViB!Bj*mjZPukWgkh^X'
+      MYSQL_DATABASE: joewalkercrypto
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 'sBGCjVlakvtoeM92Evx$YX2mEyUMMgBH'
+  
+  nginx:
+    image: nginx:1.12-alpine
+    container_name: nginx
+    platform: linux/amd64
+    ports: 
+      - 80:80
+      - 443:443
+    volumes:
+      - $(pwd)/nginx:/etc/nginx
+    depends_on: wordpress
+    restart: always

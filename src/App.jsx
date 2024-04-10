@@ -1,4 +1,4 @@
-import Card from "./components/Card"
+import CardImage from "./components/CardImage"
 import Header from "./components/Header"
 function App() {
 
@@ -6,11 +6,17 @@ function App() {
     <>
       <div className="bg-neutral-100">
         <div className="container mx-auto max-w-7xl pb-20">
-          <Header />
-          <div className="flex">
-            <Card />
-            <Card />
-            <Card />
+          <div className="bg-white">
+            <Header />
+            <div className="p-8 space-y-6">
+              {Array(3).fill().map((_, i) => (
+                <div className="flex justify-between">
+                  <CardImage />
+                  <CardImage />
+                  <CardImage />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

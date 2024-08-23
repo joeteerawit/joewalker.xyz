@@ -1,0 +1,20 @@
+<.link href={~p"/blog"}>← All posts</.link>
+
+<h1>
+    <%= @post.title %>
+</h1>
+<br>
+
+<p>
+    <time>
+        <%= @post.date %>
+    </time> by <%= @post.author %>
+</p>
+
+<br>
+<p>
+    Tagged as <%= Enum.join(@post.tags, ", " ) %>
+</p>
+<br>
+
+<%= raw @post.body %>

@@ -1,20 +1,18 @@
-# React + Vite
+# Joewalker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+To start your Phoenix server:
 
-Currently, two official plugins are available:
+  * Run `mix setup` to install and setup dependencies
+  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
 
-inspire website:
-- https://tmrwstudio.net/atlas/eight/
-- https://preview.themeforest.net/item/zento-modern-lightweight-blog-for-wordpress/full_screen_preview/51579969
+Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
 
-colors:
-![color theme 1](./src/assets/color_theme_1.webp)
-Hex Codes: `#D8F3DC, #B7E4C7, #95D5B2, #74C69D, #3DAC78`
+## Learn more
 
-![color theme 1](./src/assets/color_theme_2.webp)
-
-Hex Codes: `#90CF8E, #A7DCA5, #C6EDC3, #E4FDE1, #EFFDEE`
+  * Official website: https://www.phoenixframework.org/
+  * Guides: https://hexdocs.pm/phoenix/overview.html
+  * Docs: https://hexdocs.pm/phoenix
+  * Forum: https://elixirforum.com/c/phoenix-forum
+  * Source: https://github.com/phoenixframework/phoenix

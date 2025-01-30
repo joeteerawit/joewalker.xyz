@@ -1,6 +1,6 @@
 services:
   wordpress:
-    image: bitnami/wordpress:latest
+    image: wordpress:latest
     restart: always
     env_file: ".env.wordpress"
     volumes:

@@ -7,8 +7,8 @@ services:
     env_file:
       - .env.wordpress
     volumes:
-      - ./wordpress-data:/bitnami/wordpress
-      - ./wordpress/upload.ini:/opt/bitnami/php/etc/conf.d/uploads.ini
+      - wordpress_data:/bitnami/wordpress
+      - wordpress_config:/opt/bitnami/php/etc/conf.d
     depends_on:
       - db
     expose:
@@ -20,7 +20,7 @@ services:
     env_file:
       - .env.postgres
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data
 
   nginx:
     image: nginx:alpine
@@ -29,9 +29,9 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
+      - nginx_conf:/etc/nginx/conf.d
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
     depends_on:
       - wordpress
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
@@ -40,6 +40,44 @@ services:
     image: certbot/certbot
     restart: always
     volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
+      - certbot_conf:/etc/letsencrypt
+      - certbot_www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+
+volumes:
+  wordpress_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/wordpress/wordpress-data
+  wordpress_config:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/wordpress/config
+  postgres_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/wordpress/postgres-data
+  nginx_conf:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/wordpress/nginx
+  certbot_conf:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/wordpress/ssl/conf
+  certbot_www:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/wordpress/ssl/www

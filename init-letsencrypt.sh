@@ -3,12 +3,20 @@
 # Domain configuration
 domain="joewalker.xyz"
 domains=($domain www.$domain)
-email="$WORDPRESS_EMAIL" # Will be loaded from .env
-staging=0 # Set to 1 for testing to avoid rate limits
 
 # Load environment variables from .env file
-export $(cat .env | grep -v '#' | awk '/=/ {print $1}')
-email=$EMAIL
+set -a
+source .env.wordress
+set +a
+
+# Make sure email is set
+if [ -z "$WORDPRESS_EMAIL" ]; then
+    echo "Error: WORDPRESS_EMAIL not set in .env.wordpress file"
+    exit 1
+fi
+
+email=$WORDPRESS_EMAIL
+staging=0 # Set to 1 for testing to avoid rate limits
 
 # Path settings
 data_path="./certbot"
@@ -32,7 +40,7 @@ docker-compose up --force-recreate -d nginx
 # Request the SSL certificate
 docker-compose run --rm --entrypoint "\
   certbot certonly --webroot -w /var/www/certbot \
-    --email $email \
+    --email $WORDPRESS_EMAIL \
     $([ $staging = 1 ] && echo "--staging") \
     -d $domain -d www.$domain \
     --rsa-key-size $rsa_key_size \

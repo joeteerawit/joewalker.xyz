@@ -3,7 +3,7 @@ services:
     image: wordpress
     restart: always
     ports:
-      - 80:80
+      - 8080:80
     env_file:
       - .env.wordpress
     volumes:
@@ -19,15 +19,5 @@ services:
       - mysql_data:/var/lib/mysql
 
 volumes:
-  wordpress_data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /root/wordpress/wordpress-data
+  wordpress:
   mysql_data:
-    driver: local
-    driver_opts:
-      type: none
-      o: bind
-      device: /root/wordpress/mysql-data

@@ -3,8 +3,6 @@
 ## Steps
 
 ```bash
-mkdir -p /root/wordpress/{wordpress-data,postgres-data}
-chmod +x init-letsencrypt.sh
-./init-letsencrypt.sh
+mkdir -p /root/wordpress/{wordpress-data,mysql-data}
 docker-compose up -d
 ```

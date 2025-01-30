@@ -3,7 +3,7 @@
 # Domain configuration
 domain="joewalker.xyz"
 domains=($domain www.$domain)
-email="" # Will be loaded from .env
+email="$WORDPRESS_EMAIL" # Will be loaded from .env
 staging=0 # Set to 1 for testing to avoid rate limits
 
 # Load environment variables from .env file

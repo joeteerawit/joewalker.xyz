@@ -7,7 +7,7 @@ services:
     env_file:
       - .env.wordpress
     volumes:
-      - wordpress:/var/www/html
+      - wordpress_data:/var/www/html
       - ./wordpress/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini
 
   db:

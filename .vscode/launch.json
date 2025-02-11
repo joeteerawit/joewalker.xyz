@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "/Users/joewalker/.asdf/installs/bun/1.2.0/bin/bun",
+      "runtimeArgs": [
+        "--inspect",
+        "next",
+        "dev",
+        "--turbopack"
+      ],
+      "sourceMaps": true,
+      "console": "integratedTerminal",
+      "skipFiles": ["<node_internals>/**"],
+      "outFiles": ["${workspaceFolder}/.next/**/*.js"],
+      "env": {
+        "NODE_OPTIONS": "--inspect"
+      }
+    }
+  ]
+}

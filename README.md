@@ -1,4 +1,8 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Design
+- [jinko](https://preview.themeforest.net/item/jinko-your-personal-blog-theme/full_screen_preview/51301275)
+- [codesupply](https://revision.codesupply.co/revision/?homepage=2)
+- [spide-blog-magazine-wordpress-theme](https://preview.themeforest.net/item/spide-blog-magazine-wordpress-theme/full_screen_preview/48215102)
 
 ## Getting Started
 
